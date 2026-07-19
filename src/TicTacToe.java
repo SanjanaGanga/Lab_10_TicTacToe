@@ -91,9 +91,11 @@ public class TicTacToe {
 
     //Returns true if there is a space at the user entered coordinates
     private static boolean isValidMove(int row, int col) {
+
         return board[row][col].equals(" ");
     }
 
+    //Checks to see if there is a win on the current board for a specific player
     private static boolean isWin(String player) {
 
         return isRowWin(player) || isColWin(player) || isDiagnalWin(player);
