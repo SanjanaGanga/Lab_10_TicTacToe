@@ -13,7 +13,7 @@ public class TicTacToe {
         boolean playingAgain = true;
 
         while (playingAgain) {
-            // 1. Clear the board and set the player to X
+            // Clear the board and set the player to X
             clearBoard();
             currentPlayer = "X";
             moveCount = 0;
@@ -68,6 +68,7 @@ public class TicTacToe {
     }
 
     // Helper Methods
+    //Clears the board by setting all spaces
     private static void clearBoard() {
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
@@ -76,6 +77,7 @@ public class TicTacToe {
         }
     }
 
+    //Display the current state of the board
     private static void display() {
         System.out.println("\n-------------");
         for (int r = 0; r < ROWS; r++) {
@@ -87,6 +89,7 @@ public class TicTacToe {
         }
     }
 
+    //Returns true if there is a space at the user entered coordinates
     private static boolean isValidMove(int row, int col) {
         return board[row][col].equals(" ");
     }
@@ -96,6 +99,7 @@ public class TicTacToe {
         return isRowWin(player) || isColWin(player) || isDiagnalWin(player);
     }
 
+    //Checks for a row win for the specified player
     private static boolean isRowWin(String player) {
         for (int r = 0; r < ROWS; r++) {
             if (board[r][0].equals(player) && board[r][1].equals(player) && board[r][2].equals(player)) {
@@ -105,6 +109,7 @@ public class TicTacToe {
         return false;
     }
 
+    //Checks for a column win for the specified player
     private static boolean isColWin(String player) {
         for (int c = 0; c < COLS; c++) {
             if (board[0][c].equals(player) && board[1][c].equals(player) && board[2][c].equals(player)) {
@@ -114,6 +119,7 @@ public class TicTacToe {
         return false;
     }
 
+    //Checks for a Diagonal win for the specified player
     private static boolean isDiagnalWin(String player) {
         // Top-left to bottom-right
         if (board[0][0].equals(player) && board[1][1].equals(player) && board[2][2].equals(player)) {
@@ -133,7 +139,7 @@ public class TicTacToe {
             return true;
         }
 
-        // Condition B: Alternatively check if all win vectors are blocked by containing both an X and an O
+        // Condition B: Check if all win vectors are blocked by containing both an X and an O
         boolean allVectorsBlocked = true;
 
         // Check rows
@@ -155,7 +161,7 @@ public class TicTacToe {
         return allVectorsBlocked;
     }
 
-    //Helper method to be used by isTie() to determine if a vector has both tokens.
+    //Used by isTie() to determine if a vector has both tokens.
     private static boolean hasBothPlayers(String c1, String c2, String c3) {
         boolean hasX = c1.equals("X") || c2.equals("X") || c3.equals("X");
         boolean hasO = c1.equals("O") || c2.equals("O") || c3.equals("O");
